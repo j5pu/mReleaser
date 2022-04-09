@@ -50,8 +50,8 @@ deps() {
     sudo apt update -qq &>/dev/null && sudo apt install -qq svu >/dev/null; \
   fi
 
-  shopt -u inherit_errexit 2>/dev/null || false
-  
+  shopt -u inherit_errexit 2>/dev/null || true
+
   has parallel || { stderr "Failed to install paralell"; return 1; }
   has svu || { stderr "Failed to install svu"; return 1; }
   bats --version | grep -q "Bats " || { stderr "Failed to install bats"; return 1; }
