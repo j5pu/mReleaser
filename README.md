@@ -1,8 +1,11 @@
 # [mreleaser](https://github.com/j5pu/mreleaser)
 
 ![shrc](./.idea/icon.svg)
+
 [![Build Status](https://github.com/j5pu/mreleaser/workflows/main/badge.svg)](https://github.com/j5pu/mreleaser/actions/workflows/main.yaml)
+
 [![tap](https://github.com/j5pu/homebrew-tap/workflows/main/badge.svg)](https://github.com/j5pu/homebrew-tap/actions)
+
 Multi Language Releaser Action and Scripts
 
 ## [action](./action.yml)
@@ -30,24 +33,14 @@ jobs:
     steps:
       - uses: actions/checkout@main
       - uses: Homebrew/actions/setup-homebrew@master
-        if: runner.os == 'macOS'
       - run: make tests
 
   release:
     needs: [ tests ]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@main
-        with:
-          fetch-depth: 0
-          token: "${{ env.GITHUB_TOKEN }}"
-      - id: release
-        uses: j5pu/mreleaser@main
+      - uses: j5pu/mReleaser@main
 ```
-
-[mermaid-graph](https://waylonwalker.com/til/github-supports-mermaid//)
-[mermaid-flowchart](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)
-[mermaid](https://mermaid-js.github.io/mermaid/#/)
 
 ```mermaid
 flowchart TD;
