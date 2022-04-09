@@ -24,9 +24,4 @@ jobs:
     needs: [ tests ]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@main
-        with:
-          fetch-depth: 0
-          token: "${{ env.GITHUB_TOKEN }}"
-      - id: release
-        uses: j5pu/mReleaser@main
+      - uses: j5pu/mReleaser@main

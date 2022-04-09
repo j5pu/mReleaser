@@ -25,6 +25,7 @@ export RESET="\033[0m"
 # GitHub Token
 #
 : "${TOKEN=${GH_TOKEN:-${GITHUB_TOKEN-}}}"; export TOKEN
+: "${GH_TOKEN=${TOKEN-}}"; export GH_TOKEN
 
 #######################################
 # has command

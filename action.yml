@@ -17,19 +17,12 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - uses: actions/checkout@main
+      with:
+        fetch-depth: 0
+        token: "${{ env.GITHUB_TOKEN }}"
     - uses: Homebrew/actions/setup-homebrew@master
-    - run: |
-        . "${{ github.action_path }}/bin/mreleaser.bash"
-        echo "::echo::on"
-        echo $PATH
-        command -v version
-      shell: bash
-    - run: |
-        echo "::echo::on"
-        echo $PATH
-        command -v version
-      shell: bash
     - id: tag
-      run: version tag
+      run: "${{ github.action_path }}/bin/version" tag
       shell: bash
       if: github.ref_type == 'branch'
