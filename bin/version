@@ -3,19 +3,6 @@
 . "$(dirname "$0")/mreleaser.bash" || exit
 
 #######################################
-# write to stdout and return previous code
-# Globals:
-#   PWD
-# Arguments:
-#  None
-#######################################
-_stderr() {
-  local rc=$?
-  >&2 echo "${RED}x${RESET} ${0##*/}: ${PWD##*/}: ${ITALIC}$*${RESET}"
-  return $rc
-}
-
-#######################################
 # install svu
 # Globals:
 #   GITHUB_PATH
@@ -29,7 +16,7 @@ _install() {
         | sudo tee /etc/apt/sources.list.d/caarlos0.list >/dev/null
       sudo apt update -qq &>/dev/null && sudo apt install -qq svu &>/dev/null
     else
-      _stderr "Not Supported: $(cat /etc/os-release)"
+      stderr "Not Supported: $(cat /etc/os-release)"
     fi
   fi
 
@@ -79,7 +66,7 @@ EOF
 #   stderr    composed message with current version or dirty repository when returns 1
 #######################################
 needs() {
-  [ -z "$(git status -s)" ] || _stderr Dirty Repository
+  [ -z "$(git status -s)" ] || stderr Dirty Repository
   # bashsupport disable=BP2001
   export bumped="false" version
 
@@ -98,7 +85,7 @@ needs() {
   elif $1 && $ACTION; then
     setoutput bumped version
   else
-    _stderr "${current} == ${version}"
+    stderr "${current} == ${version}"
   fi
 }
 

@@ -53,6 +53,19 @@ setoutput() {
 }
 
 #######################################
+# write to stdout and return previous code
+# Globals:
+#   PWD
+# Arguments:
+#  None
+#######################################
+stderr() {
+  local rc=$?
+  >&2 echo "${RED}x${RESET} ${0##*/}: ${PWD##*/}: ${ITALIC}$*${RESET}"
+  return $rc
+}
+
+#######################################
 # adds variable to $GITHUB_ENV
 # Arguments:
 #  None

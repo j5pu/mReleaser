@@ -58,7 +58,6 @@ run_description() {
   assert_line "${HELP_SVU}"
 }
 
-
 @test "version invalid " {
   run_description
   assert_failure
@@ -66,7 +65,6 @@ run_description() {
   assert_line "${HELP_LINE}"
   assert_line "${HELP_SVU}"
 }
-
 
 @test "command -v svu " {
   run_description
