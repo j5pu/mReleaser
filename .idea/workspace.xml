@@ -620,8 +620,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Makefile Target.tests" />
         <item itemvalue="Makefile Target.publish" />
+        <item itemvalue="Makefile Target.tests" />
         <item itemvalue="Makefile Target.bats" />
         <item itemvalue="Makefile Target.version" />
       </list>

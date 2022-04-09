@@ -5,7 +5,6 @@
 
 set -eu
 set -o errtrace
-shopt -u inherit_errexit
 
 trap "exit 1" SIGUSR1
 PID=$$
@@ -55,10 +54,12 @@ deps() {
       | sudo tee /etc/apt/sources.list.d/caarlos0.list >/dev/null; \
     sudo apt update -qq &>/dev/null && sudo apt install -qq svu >/dev/null; \
   fi
+
+  shopt -u inherit_errexit
+
   has parallel || { stderr "Failed to install paralell"; return 1; }
   has svu || { stderr "Failed to install svu"; return 1; }
   bats --version | grep -q "Bats " || { stderr "Failed to install bats"; return 1; }
-  bash --version | grep -qv "version 5" || { stderr "Failed to install bash 5/4"; return 1; }
 }
 
 #######################################
