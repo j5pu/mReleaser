@@ -10,7 +10,7 @@
 #   0
 #######################################
 _install() {
-  if ! has svu; then
+  ! has svu || return 0
     if $DEBIAN; then
       echo "deb [trusted=yes] https://apt.fury.io/caarlos0/ /" \
         | sudo tee /etc/apt/sources.list.d/caarlos0.list >/dev/null
@@ -18,9 +18,8 @@ _install() {
     else
       stderr "Not Supported: $(cat /etc/os-release)"
     fi
-  fi
 
-  has svu
+  has svu || { stderr "Failed to install svu"; exit 1; }
 }
 
 #######################################
