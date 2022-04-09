@@ -1,0 +1,134 @@
+#!/usr/bin/env bash
+
+. "$(dirname "$0")/mreleaser.bash" || exit
+
+#######################################
+# write to stdout and return previous code
+# Globals:
+#   PWD
+# Arguments:
+#  None
+#######################################
+_stderr() {
+  local rc=$?
+  >&2 echo "$(tput bold)$(tput setaf 1)x$(tput sgr0) ${0##*/}: ${PWD##*/}: $(tput sitm)$*$(tput sgr0)"
+  return $rc
+}
+
+#######################################
+# install svu
+# Globals:
+#   GITHUB_PATH
+# Arguments:
+#   0
+#######################################
+_install() {
+  if ! has svu; then
+    if $DEBIAN; then
+      echo "deb [trusted=yes] https://apt.fury.io/caarlos0/ /" \
+        | sudo tee /etc/apt/sources.list.d/caarlos0.list >/dev/null
+      sudo apt update -qq &>/dev/null && sudo apt install -qq svu &>/dev/null
+    elif $DARWIN; then
+      brew update --quiet >/dev/null && brew install --quiet bash caarlos0/tap/svu >/dev/null
+    else
+      _stderr "Not Supported: $(cat /etc/os-release)"
+    fi
+  fi
+
+  has svu
+}
+
+#######################################
+# show usage
+# Globals:
+#   USER
+# Arguments:
+#   0
+#######################################
+help() {
+  local rc=$?
+  [ ! "${1-}" ] || { echo "${0##*/}: $1: invalid command"; echo; }
+  >&2 cat <<EOF
+usage: ${0##*/} [<command>]
+   or: ${0##*/} -h|--help
+   or: . ${0##*/}
+
+svu wrapper and version management (local and GitHub Actions)
+
+Commands:
+   commands     display ${0##*/}' commands
+   help         show help and exit
+   needs        display next version and returns 0 if current and next versions are different, returns 1 if dirty or \
+versions are the same
+   tag          git tag if current and next versions are different, returns 1 if dirty or versions are the same \
+(when use as a GitHub Action)
+
+$(svu help 2>&1)
+EOF
+
+  exit $rc
+}
+
+#######################################
+# check current and next versions are different ad tag if different and $1 is true
+# Arguments:
+#   1  true if tag should be done, false otherwise
+# Returns:
+#   1 if current and previous version are the same (0 for GitHub, using bumped step outputs as "return")
+#   0 if current and next versions are different
+# Outputs:
+#   stdout    next version when returns 0
+#   stderr    composed message with current version or dirty repository when returns 1
+#######################################
+needs() {
+  [ -z "$(git status -s)" ] || _stderr Dirty Repository
+  # bashsupport disable=BP2001
+  export bumped="false" version
+
+  local current
+  current="$("$0" current)"
+  version="$("$0" next)"
+
+  if [ "${current}" != "${version}" ]; then
+    ! $1 || { git tag "${version}" && git push --quiet origin "${version}"; }
+    if [ "${GITHUB_PATH-}" ]; then
+      export bumped="true"
+      setouput bumped version
+    else
+      echo "${version}"
+    fi
+  elif [ "${GITHUB_PATH-}" ]; then
+    setouput bumped version
+  else
+    _stderr "${current} == ${version}"
+  fi
+}
+
+#######################################
+# svu wrapper and version management (local and GitHub Actions)
+# Arguments:
+#  1  command
+# Outputs:
+#   bumped    "true" if old version and next version were different and has been tagged, "false" otherwise
+#   version   contains the latest version
+#######################################
+main() {
+  _install
+
+  if [ "${1-}" ]; then
+    case "${1-}" in
+      --help|-h|help) help ;;
+      commands)
+        printf "%s\n" "$1" help needs tag next major minor patch current | sort;
+        exit
+        ;;
+      needs) "$1" false; exit ;;
+      tag) needs true; exit ;;
+      next*|major|minor|patch|current) : ;;
+      *) false || help "$1" ;;
+    esac
+  fi
+  svu "$@" --strip-prefix
+}
+
+main "$@"

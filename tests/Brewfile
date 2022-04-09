@@ -1,0 +1,11 @@
+tap "homebrew/bundle"
+tap "homebrew/core"
+tap "bats-core/bats-core"
+
+brew "bash"
+brew "bash-completion@2"
+brew "bats-core"
+brew "parallel"
+brew "bats-core/bats-core/bats-assert"
+brew "bats-core/bats-core/bats-file"
+brew "bats-core/bats-core/bats-support"

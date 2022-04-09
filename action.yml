@@ -1,0 +1,25 @@
+name: 'Multi Releaser'
+description: 'Multi Language Releaser Action and Scripts'
+
+branding:
+  icon: "life-buoy"
+  color: "orange"
+
+outputs:
+  bumped:
+    description: "Tag/Version: Bumped (true/false)"
+    value: ${{ steps.tag.outputs.bumped }}
+
+  version:
+    description: "Tag/Version: Current (After bumped if bumped)"
+    value: ${{ steps.tag.outputs.version }}
+
+runs:
+  using: "composite"
+  steps:
+    - run: . "${{ github.action_path }}/bin/bats.bash"
+      shell: bash
+    - id: tag
+      run: version tag
+      shell: bash
+      if: github.ref_type == 'branch'
