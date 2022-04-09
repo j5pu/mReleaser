@@ -17,6 +17,9 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - uses: Homebrew/actions/setup-homebrew@master
+    - run: make brew
+      shell: bash
     - run: . "${{ github.action_path }}/bin/bats.bash"
       shell: bash
     - id: tag

@@ -100,3 +100,4 @@ if [ "$(uname -s)" != "Darwin" ]; then
 fi
 
 has "${0##*/}" || topath "$(cd "$(dirname "$0")"; pwd -P)"
+has svu || { stderr "Failed to install svu"; exit 1; }
