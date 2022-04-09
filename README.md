@@ -1,4 +1,5 @@
 # [mreleaser](https://github.com/j5pu/mreleaser)
+
 ![shrc](./.idea/icon.svg)
 [![Build Status](https://github.com/j5pu/mreleaser/workflows/main/badge.svg)](https://github.com/j5pu/mreleaser/actions/workflows/main.yaml)
 [![tap](https://github.com/j5pu/homebrew-tap/workflows/main/badge.svg)](https://github.com/j5pu/homebrew-tap/actions)
@@ -7,6 +8,7 @@ Multi Language Releaser Action and Scripts
 ## [action](./action.yml)
 
 ### Examples:
+
 ```yaml
 name: main
 
@@ -47,28 +49,26 @@ jobs:
 [mermaid-flowchart](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)
 [mermaid](https://mermaid-js.github.io/mermaid/#/)
 
-graph TD;
-  A-->B;
-  A-->C;
-  B-->D;
-  C-->D-->OUT;
-  E-->F-->G-->OUT
 ```mermaid
 flowchart TD;
-    push --> tests;
-    tests --> macos-latest;
-    tests --> macos-10.15;
-    tests --> ubuntu-latest;
-    tests --> ubuntu-18.04;
-    macos-latest --> make tests;
-    macos-10.15 --> make tests;
-    ubuntu-latest --> make tests;
-    ubuntu-18.04 --> make tests;
-    make tests --> release;
-    release --> version change
+    A[push] --> B[tests];
+    B --> C[macos-latest];
+    B --> D[macos-10.15];
+    B --> E[ubuntu-latest];
+    B --> F[ubuntu-18.04];
+    C --> G[make tests];
+    D --> G[make tests];
+    E --> G[make tests];
+    F --> G[make tests];
+    G--> H{Ok?};
+    H -- Yes --> J[release];
+    H -- No --> K[Exit];
+    J --> L[release];
+    L --> M[version change];
 ```
 
 ## [bats.bash](./bin/bats.bash)
+
 Bats helpers
 
 ### Install

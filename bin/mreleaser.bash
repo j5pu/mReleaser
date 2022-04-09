@@ -108,7 +108,7 @@ cd "$(git rev-parse --show-toplevel || kill -SIGUSR1 $PID)"
 if [ "${GITHUB_ACTOR-}" ]; then
   : "${TOKEN?}"
   ACTION=true
-  if ! grep -q "name = ${GITHUB_ACTOR}" ~/.gitconfig; then
+  if ! grep -q "name = ${GITHUB_ACTOR}" ~/.gitconfig 2>/dev/null; then
     git config --global user.name "${GITHUB_ACTOR}"
     git config --global user.email "${GITHUB_ACTOR}@example.com"
   fi
@@ -123,7 +123,10 @@ if [ "$(uname -s)" != "Darwin" ]; then
   export MACOS=false
 fi
 
-
-has "${0##*/}" || topath "$(cd "$(dirname "$0")"; pwd -P)"
+if [ "${0##*/}" = "bash" ]; then
+  topath "$(cd "$(dirname "${BASH_SOURCE[0]##*/}")"; pwd -P)"
+else
+  has "${0##*/}" || topath "$(cd "$(dirname "$0")"; pwd -P)"
+fi
 
 deps
