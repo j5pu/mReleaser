@@ -11,11 +11,10 @@
 #######################################
 _install() {
   ! has svu || return 0
-  echo "$DEBIAN"
     if $DEBIAN; then
       echo "deb [trusted=yes] https://apt.fury.io/caarlos0/ /" \
         | sudo tee /etc/apt/sources.list.d/caarlos0.list >/dev/null
-      sudo apt update -qq &>/dev/null && sudo apt install -qq svu &>/dev/null
+      sudo apt update -qq &>/dev/null && sudo apt install -qq svu >/dev/null
     else
       stderr "Not Supported: $(cat /etc/os-release)"
     fi
