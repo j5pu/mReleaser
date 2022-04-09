@@ -11,6 +11,7 @@ trap "exit 1" SIGUSR1
 PID=$$
 
 cd "$(git rev-parse --show-toplevel || kill -SIGUSR1 $PID)"
+>&2 command -v paralell || true
 
 # True if Running as GitHub Action
 #
