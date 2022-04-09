@@ -37,7 +37,7 @@ export RESET="\033[0m"
 # Arguments:
 #   1
 #######################################
-has() { command -v "$1" >/dev/null;}
+has() { command -v "$1" >/dev/null; }
 
 #######################################
 # install svu
@@ -48,13 +48,13 @@ has() { command -v "$1" >/dev/null;}
 #######################################
 _install() {
   ! has svu || return 0
-    if $DEBIAN; then
-      echo "deb [trusted=yes] https://apt.fury.io/caarlos0/ /" \
-        | sudo tee /etc/apt/sources.list.d/caarlos0.list >/dev/null
-      sudo apt update -qq &>/dev/null && sudo apt install -qq svu >/dev/null
-    else
-      stderr "Not Supported: $(cat /etc/os-release)"
-    fi
+  if $DEBIAN; then
+    echo "deb [trusted=yes] https://apt.fury.io/caarlos0/ /" \
+      | sudo tee /etc/apt/sources.list.d/caarlos0.list >/dev/null
+    sudo apt update -qq &>/dev/null && sudo apt install -qq svu >/dev/null
+  else
+    stderr "Not Supported: $(cat /etc/os-release)"
+  fi
 
   has svu || { stderr "Failed to install svu"; exit 1; }
 }
@@ -120,6 +120,7 @@ if [ "$(uname -s)" != "Darwin" ]; then
 fi
 
 has "${0##*/}" || topath "$(cd "$(dirname "$0")"; pwd -P)"
+command -v paralell || true
 #has paralell || { stderr "Failed to install paralell"; return 1; }
 #has svu || { stderr "Failed to install svu"; return 1; }
 #bats --version | grep -q "Bats " || { stderr "Failed to install bats"; return 1; }
