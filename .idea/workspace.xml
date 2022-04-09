@@ -4,29 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d6561d3-8ff0-4aac-861a-d1255edc4d73" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.envrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/action.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/bats.bash" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/mreleaser.bash" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/version" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/etc/bash_completion.d/bats.bash" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/etc/bash_completion.d/version" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Brewfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bats.bash/_bats::sourced.bats" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bats.bash/_bats::vars.bats" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bats.bash/asserts.bats" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bats.bash/bats::array.bats" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bats.bash/bats::envrc.bats" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bats.bash/func::exported.bats" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/helpers/helper.bash" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/version/version.bats" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="1d6561d3-8ff0-4aac-861a-d1255edc4d73" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -676,7 +654,16 @@
             <RunConfInfo>
               <option name="confId" value="Makefile Target.bats" />
               <option name="executorId" value="Run" />
-              <option name="timestamp" value="1649515819891" />
+              <option name="timestamp" value="1649516528184" />
+            </RunConfInfo>
+          </value>
+        </entry>
+        <entry key="Makefile Target.publish">
+          <value>
+            <RunConfInfo>
+              <option name="confId" value="Makefile Target.publish" />
+              <option name="executorId" value="Run" />
+              <option name="timestamp" value="1649517024349" />
             </RunConfInfo>
           </value>
         </entry>

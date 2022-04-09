@@ -28,8 +28,6 @@ _install() {
       echo "deb [trusted=yes] https://apt.fury.io/caarlos0/ /" \
         | sudo tee /etc/apt/sources.list.d/caarlos0.list >/dev/null
       sudo apt update -qq &>/dev/null && sudo apt install -qq svu &>/dev/null
-    elif $DARWIN; then
-      brew update --quiet >/dev/null && brew install --quiet bash caarlos0/tap/svu >/dev/null
     else
       _stderr "Not Supported: $(cat /etc/os-release)"
     fi
