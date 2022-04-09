@@ -47,7 +47,7 @@ deps() {
   if $DEBIAN && ! has svu; then \
     echo "deb [trusted=yes] https://apt.fury.io/caarlos0/ /" \
       | sudo tee /etc/apt/sources.list.d/caarlos0.list >/dev/null; \
-    sudo apt update -qq &>/dev/null && sudo apt install -qq svu >/dev/null; \
+    sudo apt-get update -qq &>/dev/null && sudo apt-get install -qq svu >/dev/null; \
   fi
 
   shopt -u inherit_errexit 2>/dev/null || true
@@ -123,10 +123,6 @@ if [ "$(uname -s)" != "Darwin" ]; then
   export MACOS=false
 fi
 
-if [ "${0##*/}" = "bash" ]; then
-  topath "$(cd "$(dirname "${BASH_SOURCE[0]##*/}")"; pwd -P)"
-else
-  has "${0##*/}" || topath "$(cd "$(dirname "$0")"; pwd -P)"
-fi
+topath "$(cd "$(dirname "${BASH_SOURCE[0]##*/}")"; pwd -P)"
 
 deps
