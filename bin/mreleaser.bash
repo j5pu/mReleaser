@@ -6,11 +6,6 @@
 set -eu
 set -o errtrace
 
-trap "exit 1" SIGUSR1
-PID=$$
-
-cd "$(git rev-parse --show-toplevel || kill -SIGUSR1 $PID)"
-
 # True if Running as GitHub Action
 #
 export ACTION
@@ -49,14 +44,14 @@ deps() {
   if command -v brew >/dev/null; then
     brew list bash &>/dev/null || brew bundle --file tests/Brewfile --quiet --no-lock
   fi
-  if $DEBIAN; then \
+  if $DEBIAN && ! has svu; then \
     echo "deb [trusted=yes] https://apt.fury.io/caarlos0/ /" \
       | sudo tee /etc/apt/sources.list.d/caarlos0.list >/dev/null; \
     sudo apt update -qq &>/dev/null && sudo apt install -qq svu >/dev/null; \
   fi
 
-  shopt -u inherit_errexit
-
+  shopt -u inherit_errexit 2>/dev/null || false
+  
   has parallel || { stderr "Failed to install paralell"; return 1; }
   has svu || { stderr "Failed to install svu"; return 1; }
   bats --version | grep -q "Bats " || { stderr "Failed to install bats"; return 1; }
@@ -105,6 +100,11 @@ topath() {
   export PATH="${1}:${PATH}"
 }
 
+
+trap "exit 1" SIGUSR1
+PID=$$
+cd "$(git rev-parse --show-toplevel || kill -SIGUSR1 $PID)"
+
 if [ "${GITHUB_ACTOR-}" ]; then
   : "${TOKEN?}"
   ACTION=true
@@ -122,6 +122,7 @@ if [ "$(uname -s)" != "Darwin" ]; then
   fi
   export MACOS=false
 fi
+
 
 has "${0##*/}" || topath "$(cd "$(dirname "$0")"; pwd -P)"
 

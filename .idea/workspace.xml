@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d6561d3-8ff0-4aac-861a-d1255edc4d73" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/action.yml" beforeDir="false" afterPath="$PROJECT_DIR$/action.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/mreleaser.bash" beforeDir="false" afterPath="$PROJECT_DIR$/bin/mreleaser.bash" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -668,7 +666,7 @@
             <RunConfInfo>
               <option name="confId" value="Makefile Target.publish" />
               <option name="executorId" value="Run" />
-              <option name="timestamp" value="1649528074527" />
+              <option name="timestamp" value="1649529568941" />
             </RunConfInfo>
           </value>
         </entry>
