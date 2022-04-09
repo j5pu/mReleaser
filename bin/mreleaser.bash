@@ -79,8 +79,6 @@ if [ "$(uname -s)" != "Darwin" ]; then
   if grep -qi debian /etc/os-release 2>/dev/null; then
     export DEBIAN=true
   fi
-    echo "::echo::on"
-  echo $DEBIAN
   export MACOS=false
 fi
 
