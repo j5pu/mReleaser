@@ -11,7 +11,7 @@
 #######################################
 _stderr() {
   local rc=$?
-  >&2 echo "$(tput bold)$(tput setaf 1)x$(tput sgr0) ${0##*/}: ${PWD##*/}: $(tput sitm)$*$(tput sgr0)"
+  >&2 echo "${RED}x${RESET} ${0##*/}: ${PWD##*/}: ${ITALIC}$*${RESET}"
   return $rc
 }
 
@@ -72,7 +72,7 @@ EOF
 # Arguments:
 #   1  true if tag should be done, false otherwise
 # Returns:
-#   1 if current and previous version are the same (0 for GitHub, using bumped step outputs as "return")
+#   1 if current and previous version are the same (0 for GitHub and tag command, otherwise 1)
 #   0 if current and next versions are different
 # Outputs:
 #   stdout    next version when returns 0
@@ -89,13 +89,13 @@ needs() {
 
   if [ "${current}" != "${version}" ]; then
     ! $1 || { git tag "${version}" && git push --quiet origin "${version}"; }
-    if [ "${GITHUB_PATH-}" ]; then
+    if $ACTION; then
       export bumped="true"
       setoutput bumped version
     else
       echo "${version}"
     fi
-  elif [ "${GITHUB_PATH-}" ]; then
+  elif $1 && $ACTION; then
     setoutput bumped version
   else
     _stderr "${current} == ${version}"

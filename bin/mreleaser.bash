@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+# shellcheck shell=bash
 
 #
 # Mreleaser Actions.bash
@@ -23,6 +23,10 @@ export DEBIAN=false
 # True if macOS, otherwise false
 #
 export MACOS=true
+
+export ITALIC="\033[3m"
+export RED="\033[1;31m"
+export RESET="\033[0m"
 
 # GitHub Token
 #
