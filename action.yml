@@ -23,6 +23,8 @@ runs:
         token: "${{ env.GITHUB_TOKEN }}"
     - uses: Homebrew/actions/setup-homebrew@master
     - id: tag
-      run: "${{ github.action_path }}/bin/version" tag
+      run: |
+        . "${{ github.action_path }}/bin/mreleaser.bash"
+        version tag
       shell: bash
       if: github.ref_type == 'branch'
