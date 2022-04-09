@@ -14,9 +14,6 @@ deps:
 	@type svu >/dev/null
 
 
-brew:
-	@brew list bash &>/dev/null || brew bundle --file tests/Brewfile --quiet --no-lock | grep -v "^Using" >/dev/null
-
 publish: tests
 	@git add .
 	@git commit --quiet -a -m "$${msg:-auto}" || true

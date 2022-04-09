@@ -18,7 +18,6 @@ jobs:
     steps:
       - uses: actions/checkout@main
       - uses: Homebrew/actions/setup-homebrew@master
-      - run: command -v svu
       - run: make tests
 
   release:
