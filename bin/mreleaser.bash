@@ -24,6 +24,10 @@ export DEBIAN=false
 #
 export MACOS=true
 
+# GitHub Token
+#
+: "${TOKEN=${GH_TOKEN:-${GITHUB_TOKEN-}}}"; export TOKEN
+
 #######################################
 # has command
 # Arguments:
@@ -71,6 +75,8 @@ fi
 
 if [ "$(uname -s)" != "Darwin" ]; then
   grep -qvi debian /etc/os-release 2>/dev/null || export DEBIAN=true
+    echo "::echo::on"
+  echo $DEBIAN
   export MACOS=false
 fi
 

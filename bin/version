@@ -91,12 +91,12 @@ needs() {
     ! $1 || { git tag "${version}" && git push --quiet origin "${version}"; }
     if [ "${GITHUB_PATH-}" ]; then
       export bumped="true"
-      setouput bumped version
+      setoutput bumped version
     else
       echo "${version}"
     fi
   elif [ "${GITHUB_PATH-}" ]; then
-    setouput bumped version
+    setoutput bumped version
   else
     _stderr "${current} == ${version}"
   fi
