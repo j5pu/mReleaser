@@ -99,5 +99,6 @@ if [ "$(uname -s)" != "Darwin" ]; then
   export MACOS=false
 fi
 
+topath "/home/linuxbrew/.linuxbrew/bin"
 has "${0##*/}" || topath "$(cd "$(dirname "$0")"; pwd -P)"
-has svu || { stderr "Failed to install svu"; exit 1; }
+has svu || { stderr "Failed to install svu"; return 1; }
