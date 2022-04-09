@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d6561d3-8ff0-4aac-861a-d1255edc4d73" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/bin/mreleaser.bash" beforeDir="false" afterPath="$PROJECT_DIR$/bin/mreleaser.bash" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/version" beforeDir="false" afterPath="$PROJECT_DIR$/bin/version" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/version/version.bats" beforeDir="false" afterPath="$PROJECT_DIR$/tests/version/version.bats" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/main.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/main.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -667,7 +666,7 @@
             <RunConfInfo>
               <option name="confId" value="Makefile Target.publish" />
               <option name="executorId" value="Run" />
-              <option name="timestamp" value="1649521317889" />
+              <option name="timestamp" value="1649522084984" />
             </RunConfInfo>
           </value>
         </entry>

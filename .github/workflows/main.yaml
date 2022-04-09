@@ -18,7 +18,6 @@ jobs:
     steps:
       - uses: actions/checkout@main
       - uses: Homebrew/actions/setup-homebrew@master
-        if: runner.os == 'macOS'
       - run: make tests
 
   release:
