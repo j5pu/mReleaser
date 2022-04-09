@@ -3,6 +3,26 @@
 . "$(dirname "$0")/mreleaser.bash" || exit
 
 #######################################
+# install svu
+# Globals:
+#   GITHUB_PATH
+# Arguments:
+#   0
+#######################################
+_install() {
+  ! has svu || return 0
+    if $DEBIAN; then
+      echo "deb [trusted=yes] https://apt.fury.io/caarlos0/ /" \
+        | sudo tee /etc/apt/sources.list.d/caarlos0.list >/dev/null
+      sudo apt update -qq &>/dev/null && sudo apt install -qq svu >/dev/null
+    else
+      stderr "Not Supported: $(cat /etc/os-release)"
+    fi
+
+  has svu || { stderr "Failed to install svu"; exit 1; }
+}
+
+#######################################
 # show usage
 # Globals:
 #   USER

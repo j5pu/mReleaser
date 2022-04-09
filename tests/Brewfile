@@ -10,4 +10,7 @@ brew "parallel"
 brew "bats-core/bats-core/bats-assert"
 brew "bats-core/bats-core/bats-file"
 brew "bats-core/bats-core/bats-support"
-brew "caarlos0/tap/svu"
+if RUBY_PLATFORM[/darwin/]
+  tap "caarlos0/tap"
+  brew "caarlos0/tap/svu"
+end

@@ -40,6 +40,26 @@ export RESET="\033[0m"
 has() { command -v "$1" >/dev/null;}
 
 #######################################
+# install svu
+# Globals:
+#   GITHUB_PATH
+# Arguments:
+#   0
+#######################################
+_install() {
+  ! has svu || return 0
+    if $DEBIAN; then
+      echo "deb [trusted=yes] https://apt.fury.io/caarlos0/ /" \
+        | sudo tee /etc/apt/sources.list.d/caarlos0.list >/dev/null
+      sudo apt update -qq &>/dev/null && sudo apt install -qq svu >/dev/null
+    else
+      stderr "Not Supported: $(cat /etc/os-release)"
+    fi
+
+  has svu || { stderr "Failed to install svu"; exit 1; }
+}
+
+#######################################
 # set GitHub Action output and adds variable to env
 # Arguments:
 #  None
@@ -99,6 +119,5 @@ if [ "$(uname -s)" != "Darwin" ]; then
   export MACOS=false
 fi
 
-topath "/home/linuxbrew/.linuxbrew/bin"
 has "${0##*/}" || topath "$(cd "$(dirname "$0")"; pwd -P)"
 has svu || { stderr "Failed to install svu"; return 1; }
