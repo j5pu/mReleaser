@@ -111,15 +111,10 @@ run_description() {
   git add file
   git commit --quiet -m "second commit"
   git push --quiet origin main
+
   run version needs
-  if $ACTION; then
-    assert_success
-    assert_line "::set-output name=bumped::false"
-    assert_line "::set-output name=version::0.0.0"
-  else
-    assert_failure
-    assert_output --partial "0.0.0 == 0.0.0"
-  fi
+  assert_failure
+  assert_output --partial "0.0.0 == 0.0.0"
 }
 
 @test "version tag: clean repo " {
