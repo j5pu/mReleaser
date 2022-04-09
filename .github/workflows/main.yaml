@@ -18,6 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@main
       - uses: Homebrew/actions/setup-homebrew@master
+      - run: brew install "caarlos0/tap/svu"
       - run: make tests
 
   release:
