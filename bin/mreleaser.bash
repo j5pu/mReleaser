@@ -11,7 +11,6 @@ trap "exit 1" SIGUSR1
 PID=$$
 
 cd "$(git rev-parse --show-toplevel || kill -SIGUSR1 $PID)"
->&2 command -v paralell || true
 
 # True if Running as GitHub Action
 #
@@ -41,23 +40,25 @@ export RESET="\033[0m"
 has() { command -v "$1" >/dev/null; }
 
 #######################################
-# install svu
+# install ad checks dependencies
 # Globals:
 #   GITHUB_PATH
 # Arguments:
 #   0
 #######################################
-_install() {
-  ! has svu || return 0
-  if $DEBIAN; then
-    echo "deb [trusted=yes] https://apt.fury.io/caarlos0/ /" \
-      | sudo tee /etc/apt/sources.list.d/caarlos0.list >/dev/null
-    sudo apt update -qq &>/dev/null && sudo apt install -qq svu >/dev/null
-  else
-    stderr "Not Supported: $(cat /etc/os-release)"
+deps() {
+  if command -v brew >/dev/null; then
+    brew list bash &>/dev/null || brew bundle --file tests/Brewfile --quiet --no-lock
   fi
-
-  has svu || { stderr "Failed to install svu"; exit 1; }
+  if $DEBIAN; then \
+    echo "deb [trusted=yes] https://apt.fury.io/caarlos0/ /" \
+      | sudo tee /etc/apt/sources.list.d/caarlos0.list >/dev/null; \
+    sudo apt update -qq &>/dev/null && sudo apt install -qq svu >/dev/null; \
+  fi
+  has parallel || { stderr "Failed to install paralell"; return 1; }
+  has svu || { stderr "Failed to install svu"; return 1; }
+  bats --version | grep -q "Bats " || { stderr "Failed to install bats"; return 1; }
+  bash --version | grep -qv "version 5" || { stderr "Failed to install bash 5/4"; return 1; }
 }
 
 #######################################
@@ -104,6 +105,7 @@ topath() {
 }
 
 if [ "${GITHUB_ACTOR-}" ]; then
+  : "${TOKEN?}"
   ACTION=true
   if ! grep -q "name = ${GITHUB_ACTOR}" ~/.gitconfig; then
     git config --global user.name "${GITHUB_ACTOR}"
@@ -121,8 +123,5 @@ if [ "$(uname -s)" != "Darwin" ]; then
 fi
 
 has "${0##*/}" || topath "$(cd "$(dirname "$0")"; pwd -P)"
->&2 command -v paralell || true
-#has paralell || { stderr "Failed to install paralell"; return 1; }
-#has svu || { stderr "Failed to install svu"; return 1; }
-#bats --version | grep -q "Bats " || { stderr "Failed to install bats"; return 1; }
-#bash --version | grep -qv "version 5" || { stderr "Failed to install bash 5/4"; return 1; }
+
+deps

@@ -18,8 +18,6 @@ runs:
   using: "composite"
   steps:
     - uses: Homebrew/actions/setup-homebrew@master
-    - run: make deps
-      shell: bash
     - run: |
         . "${{ github.action_path }}/bin/bats.bash"
         echo "::echo::on"

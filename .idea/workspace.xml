@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d6561d3-8ff0-4aac-861a-d1255edc4d73" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/action.yml" beforeDir="false" afterPath="$PROJECT_DIR$/action.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/mreleaser.bash" beforeDir="false" afterPath="$PROJECT_DIR$/bin/mreleaser.bash" afterDir="false" />
     </list>
@@ -620,10 +620,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Makefile Target.tests" />
         <item itemvalue="Makefile Target.publish" />
         <item itemvalue="Makefile Target.bats" />
         <item itemvalue="Makefile Target.version" />
-        <item itemvalue="Makefile Target.tests" />
       </list>
     </recent_temporary>
   </component>
@@ -668,7 +668,7 @@
             <RunConfInfo>
               <option name="confId" value="Makefile Target.publish" />
               <option name="executorId" value="Run" />
-              <option name="timestamp" value="1649527455445" />
+              <option name="timestamp" value="1649528074527" />
             </RunConfInfo>
           </value>
         </entry>
@@ -677,7 +677,7 @@
             <RunConfInfo>
               <option name="confId" value="Makefile Target.tests" />
               <option name="executorId" value="Run" />
-              <option name="timestamp" value="1649500783915" />
+              <option name="timestamp" value="1649529294575" />
             </RunConfInfo>
           </value>
         </entry>
