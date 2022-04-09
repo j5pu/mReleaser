@@ -1,7 +1,7 @@
 # shellcheck shell=bash
 
 #
-# Mreleaser Actions.bash
+# Mreleaser Common Library
 
 set -eu
 set -o errtrace

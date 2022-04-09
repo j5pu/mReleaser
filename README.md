@@ -43,6 +43,31 @@ jobs:
         uses: j5pu/mreleaser@main
 ```
 
+[mermaid-graph](https://waylonwalker.com/til/github-supports-mermaid//)
+[mermaid-flowchart](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)
+[mermaid](https://mermaid-js.github.io/mermaid/#/)
+
+graph TD;
+  A-->B;
+  A-->C;
+  B-->D;
+  C-->D-->OUT;
+  E-->F-->G-->OUT
+```mermaid
+flowchart TD;
+    push --> tests;
+    tests --> macos-latest;
+    tests --> macos-10.15;
+    tests --> ubuntu-latest;
+    tests --> ubuntu-18.04;
+    macos-latest --> make tests;
+    macos-10.15 --> make tests;
+    ubuntu-latest --> make tests;
+    ubuntu-18.04 --> make tests;
+    make tests --> release;
+    release --> version change
+```
+
 ## [bats.bash](./bin/bats.bash)
 Bats helpers
 

@@ -19,7 +19,7 @@ runs:
   steps:
     - uses: Homebrew/actions/setup-homebrew@master
     - run: |
-        . "${{ github.action_path }}/bin/bats.bash"
+        . "${{ github.action_path }}/bin/mreleaser.bash"
         echo "::echo::on"
         echo $PATH
         command -v version
