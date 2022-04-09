@@ -123,6 +123,6 @@ if [ "$(uname -s)" != "Darwin" ]; then
   export MACOS=false
 fi
 
-topath "$(cd "$(dirname "${BASH_SOURCE[0]##*/}")"; pwd -P)"
+topath "$(cd "$(dirname "${BASH_SOURCE[0]}")"; pwd -P)"
 
 deps
