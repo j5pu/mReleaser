@@ -99,7 +99,7 @@
       <recent name="$PROJECT_DIR$/etc/bash_completion.d" />
     </key>
   </component>
-  <component name="RunManager" selected="Makefile Target.bats">
+  <component name="RunManager" selected="Makefile Target.publish">
     <configuration default="true" type="BashConfigurationType" singleton="false" factoryName="Bash">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="INTERPRETER_PATH" value="" />
@@ -176,6 +176,12 @@
     </configuration>
     <configuration name="bats" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" singleton="false" temporary="true">
       <makefile filename="$PROJECT_DIR$/Makefile" target="bats" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <configuration name="publish" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" singleton="false" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="publish" workingDirectory="" arguments="">
         <envs />
       </makefile>
       <method v="2" />
@@ -632,6 +638,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Makefile Target.publish" />
         <item itemvalue="Makefile Target.bats" />
         <item itemvalue="Makefile Target.version" />
         <item itemvalue="Makefile Target.tests" />
