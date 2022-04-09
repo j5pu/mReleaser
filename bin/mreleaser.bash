@@ -67,8 +67,10 @@ topath() {
 
 if [ "${GITHUB_ACTOR-}" ]; then
   ACTION=true
-  git config --global user.name "${GITHUB_ACTOR}"
-  git config --global user.email "${GITHUB_ACTOR}@example.com"
+  if ! grep -q "name = ${GITHUB_ACTOR}"; then
+    git config --global user.name "${GITHUB_ACTOR}"
+    git config --global user.email "${GITHUB_ACTOR}@example.com"
+  fi
 else
   ACTION=false
 fi
