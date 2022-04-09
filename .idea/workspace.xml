@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d6561d3-8ff0-4aac-861a-d1255edc4d73" name="Changes" comment="" />
+    <list default="true" id="1d6561d3-8ff0-4aac-861a-d1255edc4d73" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/action.yml" beforeDir="false" afterPath="$PROJECT_DIR$/action.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/mreleaser.bash" beforeDir="false" afterPath="$PROJECT_DIR$/bin/mreleaser.bash" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -664,7 +668,7 @@
             <RunConfInfo>
               <option name="confId" value="Makefile Target.publish" />
               <option name="executorId" value="Run" />
-              <option name="timestamp" value="1649526596398" />
+              <option name="timestamp" value="1649527455445" />
             </RunConfInfo>
           </value>
         </entry>

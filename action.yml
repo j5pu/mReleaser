@@ -20,7 +20,16 @@ runs:
     - uses: Homebrew/actions/setup-homebrew@master
     - run: make deps
       shell: bash
-    - run: . "${{ github.action_path }}/bin/bats.bash"
+    - run: |
+        . "${{ github.action_path }}/bin/bats.bash"
+        echo "::echo::on"
+        echo $PATH
+        command -v version
+      shell: bash
+    - run: |
+        echo "::echo::on"
+        echo $PATH
+        command -v version
       shell: bash
     - id: tag
       run: version tag

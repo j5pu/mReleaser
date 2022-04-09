@@ -120,4 +120,7 @@ if [ "$(uname -s)" != "Darwin" ]; then
 fi
 
 has "${0##*/}" || topath "$(cd "$(dirname "$0")"; pwd -P)"
-has svu || { stderr "Failed to install svu"; return 1; }
+#has paralell || { stderr "Failed to install paralell"; return 1; }
+#has svu || { stderr "Failed to install svu"; return 1; }
+#bats --version | grep -q "Bats " || { stderr "Failed to install bats"; return 1; }
+#bash --version | grep -qv "version 5" || { stderr "Failed to install bash 5/4"; return 1; }
