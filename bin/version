@@ -94,3 +94,5 @@ main() {
 }
 
 main "$@"
+
+# TODO: paquete shenv de python, y acabar este releaser con todo
