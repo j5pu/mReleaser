@@ -33,7 +33,6 @@ export PYPACKAGE
 #
 export VERSION
 
-
 export ITALIC="\033[3m"
 export RED="\033[1;31m"
 export RESET="\033[0m"
@@ -42,6 +41,38 @@ export RESET="\033[0m"
 #
 : "${TOKEN=${GH_TOKEN:-${GITHUB_TOKEN-}}}"; export TOKEN
 : "${GH_TOKEN=${TOKEN-}}"; export GH_TOKEN
+
+
+#######################################
+# install ad checks dependencies
+# Globals:
+#   GITHUB_PATH
+# Arguments:
+#   0
+#######################################
+_deps() {
+  if [ "$(uname -s)" != "Darwin" ]; then
+    if grep -qi debian /etc/os-release 2>/dev/null; then
+      export DEBIAN=true
+      if ! has svu; then \
+        echo "deb [trusted=yes] https://apt.fury.io/caarlos0/ /" \
+          | sudo tee /etc/apt/sources.list.d/caarlos0.list >/dev/null; \
+        sudo apt-get update -qq &>/dev/null && sudo apt-get install -qq svu >/dev/null; \
+      fi
+    fi
+    export MACOS=false
+  fi
+
+  if command -v brew >/dev/null; then
+    brew list bash &>/dev/null || brew bundle --file tests/Brewfile --quiet --no-lock
+  fi
+
+  shopt -u inherit_errexit 2>/dev/null || true
+
+  has parallel || { stderr "Failed to install paralell"; return 1; }
+  has svu || { stderr "Failed to install svu"; return 1; }
+  bats --version | grep -q "Bats " || { stderr "Failed to install bats"; return 1; }
+}
 
 #######################################
 # set variables
@@ -60,13 +91,6 @@ _vars() {
     ACTION=false
   fi
 
-  if [ "$(uname -s)" != "Darwin" ]; then
-    if grep -qi debian /etc/os-release 2>/dev/null; then
-      export DEBIAN=true
-    fi
-    export MACOS=false
-  fi
-
   CURRENT="$(svu --strip-prefix current)"
   VERSION="$(svu --strip-prefix next)"
 
@@ -81,30 +105,6 @@ _vars() {
 #   1
 #######################################
 has() { command -v "$1" >/dev/null; }
-
-#######################################
-# install ad checks dependencies
-# Globals:
-#   GITHUB_PATH
-# Arguments:
-#   0
-#######################################
-deps() {
-  if command -v brew >/dev/null; then
-    brew list bash &>/dev/null || brew bundle --file tests/Brewfile --quiet --no-lock
-  fi
-  if $DEBIAN && ! has svu; then \
-    echo "deb [trusted=yes] https://apt.fury.io/caarlos0/ /" \
-      | sudo tee /etc/apt/sources.list.d/caarlos0.list >/dev/null; \
-    sudo apt-get update -qq &>/dev/null && sudo apt-get install -qq svu >/dev/null; \
-  fi
-
-  shopt -u inherit_errexit 2>/dev/null || true
-
-  has parallel || { stderr "Failed to install paralell"; return 1; }
-  has svu || { stderr "Failed to install svu"; return 1; }
-  bats --version | grep -q "Bats " || { stderr "Failed to install bats"; return 1; }
-}
 
 #######################################
 # set GitHub Action output and adds variable to env
@@ -154,8 +154,8 @@ trap "exit 1" SIGUSR1
 PID=$$
 cd "$(git rev-parse --show-toplevel || kill -SIGUSR1 $PID)"
 
+_deps
 _vars
 
 topath "$(cd "$(dirname "${BASH_SOURCE[0]}")"; pwd -P)"
 
-deps

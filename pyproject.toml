@@ -1,0 +1,157 @@
+[build-system]
+requires = ['setuptools', 'setuptools_scm>=6.2', 'wheel']
+build-backend = 'setuptools.build_meta'
+
+[tool.setuptools_scm]
+
+[tool.pylint]  # pylint --long-help
+[tool.pylint."MASTER"]
+#ignore = ['__pycache__', 'backup', 'build', 'dist', 'docs', 'htmlcov', 'tests', 'tmp', 'venv']
+ignore-paths=["^tests/*", "^venv/*",]
+#ignore-paths = ['tests/*', 'venv/*']
+#ignore-paths = ['**/__pycache__/**', '**/backup/**', '**/build/**', '**/dist/**', '**/docs/**',
+#    '**/htmlcov/**', '**/tests/**', '**/tmp/**', '**/vvenv/**']
+jobs = 0
+persistent = ['yes']
+recursive = ['yes']
+suggestion-mode = ['yes']
+unsafe-load-any-extension = ['no']
+
+[tool.pylint."BASIC"]
+argument-name-hint = ['(([a-z][a-z0-9_]{1,30})|(_[a-z0-9_]*))$']
+argument-rgx = ['(([a-z][a-z0-9_]{1,30})|(_[a-z0-9_]*))$']
+attr-name-hint = ['(([a-z][a-z0-9_]{1,30})|(_[a-z0-9_]*))$']
+attr-rgx = ['(([a-z][a-z0-9_]{1,30})|(_[a-z0-9_]*))$']
+bad-names = ['foo,bar,baz,toto,tutu,tata']
+class-attribute-name-hint = ['([A-Za-z_][A-Za-z0-9_]{1,30}|(__.*__))$']
+class-attribute-rgx = ['([A-Za-z_][A-Za-z0-9_]{1,30}|(__.*__))$']
+class-name-hint = ['[A-Z_][a-zA-Z0-9]+$']
+class-rgx = ['[A-Z_][a-zA-Z0-9]+$']
+const-name-hint = ['(([A-Z_][A-Z0-9_]*)|(__.*__))$']
+const-rgx = ['(([A-Z_][A-Z0-9_]*)|(__.*__))$']
+docstring-min-length = -1
+function-name-hint = ['(([a-z][a-z0-9_]{1,30})|(_[a-z0-9_]*))$']
+function-rgx = ['(([a-z][a-z0-9_]{1,30})|(_[a-z0-9_]*))$']
+good-names = ['_,i,j,k,o,v,x,y']
+include-naming-hint = ['yes']
+inlinevar-name-hint = ['[A-Za-z_][A-Za-z0-9_]*$']
+inlinevar-rgx = ['[A-Za-z_][A-Za-z0-9_]*$']
+method-name-hint = ['(([a-z][a-z0-9_]{1,30})|(_[a-z0-9_]*))$']
+method-rgx = ['(([a-z][a-z0-9_]{1,30})|(_[a-z0-9_]*))$']
+module-name-hint = ['(([a-z_][a-z0-9_]*)|([A-Z][a-zA-Z0-9]+))$']
+module-rgx = ['(([a-z_][a-z0-9_]*)|([A-Z][a-zA-Z0-9]+))$']
+no-docstring-rgx = ['^_']
+property-classes = ['abc.abstractproperty']
+variable-name-hint = ['(([a-z][a-z0-9_]{1,30})|(_[a-z0-9_]*))$']
+variable-rgx = ['(([^lO])|([a-z][a-z0-9_]{1,30})|(_[a-z0-9_]*))$']
+
+[tool.pylint."CLASSES"]
+defining-attr-methods = ['__init__,__new__,setUp']
+exclude-protected = ['_force_terminal', '_asdict,_fields,_replace,_source,_make,_force_terminal']
+valid-classmethod-first-arg = ['cls']
+valid-metaclass-classmethod-first-arg = ['mcs']
+
+[tool.pylint."DESIGN"]
+max-args = 20
+max-attributes = 20
+max-bool-expr = 5
+max-branches = 12
+max-locals = 15
+max-parents = 7
+max-public-methods = 20
+max-returns = 6
+max-statements = 50
+min-public-methods = 2
+
+[tool.pylint."EXCEPTIONS"]
+overgeneral-exceptions = ['Exception']
+
+[tool.pylint."FORMAT"]
+ignore-long-lines = ['^\s*(# )?<?https?://\S+>?$']
+indent-after-paren = 4
+indent-string = "    "
+max-line-length = 120
+max-module-lines = 1000
+no-space-check = ["trailing-comma,dict-separator"]
+single-line-class-stmt = ["no"]
+single-line-if-stmt = ["no"]
+
+[tool.pylint."IMPORTS"]
+allow-wildcard-with-all = ['no']
+analyse-fallback-blocks = ['no']
+deprecated-modules = []
+known-third-party = []
+relative-beyond-top-level = ['yes']
+
+[tool.pylint."LOGGING"]
+logging-modules = ['logging', 'loguru']
+
+[tool.pylint."MISCELLANEOUS"]
+notes = ['FIXME,TODO']
+
+[tool.pylint."REFACTORING"]
+max-nested-blocks = 5
+
+[tool.pylint."REPORTS"]
+evaluation = ['10.0 - ((float(5 * error + warning + refactor + convention) / statement) * 10)']
+output-format = ['colorized']
+reports = ['yes']
+score = ['yes']
+
+[tool.pylint."SIMILARITIES"]
+ignore-comments = ['yes']
+ignore-docstrings = ['yes']
+ignore-imports = ['yes']
+min-similarity-lines = 11
+
+[tool.pylint."SPELLING"]
+spelling-store-unknown-words = ['no']
+
+[tool.pylint.'TYPECHECK']
+contextmanager-decorators = ['contextlib.contextmanager']
+ignore-mixin-members = ['yes']
+ignore-on-opaque-inference = ['yes']
+ignored-classes = []
+missing-member-hint = ['yes']
+missing-member-hint-distance = 1
+missing-member-max-choices = 1
+
+[tool.pylint.'VARIABLES']
+allowed-redefined-builtins = ['print,']
+callbacks = ['cb_,_cb']
+dummy-variables-rgx = ['_+$|(_[a-zA-Z0-9_]*[a-zA-Z0-9]+?$)|dummy|^ignored_|^unused_']
+ignored-argument-names = ['_.*|^ignored_|^unused_']
+init-import = ['no']
+redefining-builtins-modules = ['print']
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+log_level = 'ERROR'
+python_files = 'test_*.py'
+norecursedirs = [
+    '*.egg', '.eggs', 'dist', 'build', 'docs', '.tox', '.git', '__pycache__', 'backup', 'scripts',
+    'templates', 'venv'
+]
+doctest_optionflags = ['ELLIPSIS', 'NUMBER', 'NORMALIZE_WHITESPACE', 'IGNORE_EXCEPTION_DETAIL']
+filterwarnings = [
+    'ignore:please use dns.resolver.resolve\(\) instead:DeprecationWarning',
+    'ignore:invalid escape sequence \\:DeprecationWarning',
+    "ignore:private variables, such as '_Name__.*, will be normal attributes in 3.10:DeprecationWarning"
+]
+addopts = [
+    '--doctest-continue-on-failure',
+    '--doctest-ignore-import-errors',
+    '--doctest-modules',
+    '--doctest-report=ndiff',
+    '--full-trace',
+    '--ignore-glob=*/backup/*',
+    '--ignore-glob=*.sh',
+    '--ignore-glob=*/test/*',
+    '--ignore-glob=*/tmp/*',
+    '--showlocals',
+    '--strict-markers',
+    '--tb=long',
+    '-rA',  # “-r: short test summary info”, "-A: for all status.
+    '--verbosity=4',
+]
+
