@@ -46,17 +46,25 @@ EOF
 #######################################
 needs() {
   [ -z "$(git status -s)" ] || stderr Dirty Repository
-  if $BUMPED; then
-    ! $1 || { git tag "${VERSION}" && git push --quiet origin "${VERSION}"; }
+  # bashsupport disable=BP2001
+  export bumped="false" version
+
+  local current
+  current="$("$0" current)"
+  version="$("$0" next)"
+
+  if [ "${current}" != "${version}" ]; then
+    ! $1 || { git tag "${version}" && git push --quiet origin "${version}"; }
     if $ACTION; then
-      setoutput BUMPED VERSION
+      export bumped="true"
+      setoutput bumped version
     else
-      echo "${VERSION}"
+      echo "${version}"
     fi
   elif $1 && $ACTION; then
-    setoutput BUMPED VERSION
+    setoutput bumped version
   else
-    stderr "${CURRENT} == ${VERSION}"
+    stderr "${current} == ${version}"
   fi
 }
 
@@ -86,5 +94,3 @@ main() {
 }
 
 main "$@"
-
-# TODO: paquete shenv de python, y acabar este releaser con todo y pystartup

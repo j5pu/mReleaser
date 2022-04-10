@@ -10,6 +10,13 @@ set -o errtrace
 #
 export ACTION
 
+# "true" if $CURRENT different from $VERSION, "false" otherwise
+export BUMPED
+
+# Current Version
+#
+export CURRENT
+
 # True if DEBIAN, otherwise false
 #
 export DEBIAN=false
@@ -17,6 +24,15 @@ export DEBIAN=false
 # True if macOS, otherwise false
 #
 export MACOS=true
+
+# Python Package Name from setup.cfg if present
+#
+export PYPACKAGE
+
+# Version Bumped or Next Version
+#
+export VERSION
+
 
 export ITALIC="\033[3m"
 export RED="\033[1;31m"
@@ -26,6 +42,38 @@ export RESET="\033[0m"
 #
 : "${TOKEN=${GH_TOKEN:-${GITHUB_TOKEN-}}}"; export TOKEN
 : "${GH_TOKEN=${TOKEN-}}"; export GH_TOKEN
+
+#######################################
+# set variables
+# Arguments:
+#  None
+#######################################
+_vars() {
+  if [ "${GITHUB_ACTOR-}" ]; then
+    : "${TOKEN?}"
+    ACTION=true
+    if ! grep -q "name = ${GITHUB_ACTOR}" ~/.gitconfig 2>/dev/null; then
+      git config --global user.name "${GITHUB_ACTOR}"
+      git config --global user.email "${GITHUB_ACTOR}@example.com"
+    fi
+  else
+    ACTION=false
+  fi
+
+  if [ "$(uname -s)" != "Darwin" ]; then
+    if grep -qi debian /etc/os-release 2>/dev/null; then
+      export DEBIAN=true
+    fi
+    export MACOS=false
+  fi
+
+  CURRENT="$(svu --strip-prefix current)"
+  VERSION="$(svu --strip-prefix next)"
+
+  BUMPED=false
+  [ "${CURRENT}" = "${VERSION}" ] || BUMPED=true
+  PYPACKAGE="$(awk -F '[= ]' '/^name = / { print $4 }' setup.cfg 2>/dev/null || true)"
+}
 
 #######################################
 # has command
@@ -106,23 +154,7 @@ trap "exit 1" SIGUSR1
 PID=$$
 cd "$(git rev-parse --show-toplevel || kill -SIGUSR1 $PID)"
 
-if [ "${GITHUB_ACTOR-}" ]; then
-  : "${TOKEN?}"
-  ACTION=true
-  if ! grep -q "name = ${GITHUB_ACTOR}" ~/.gitconfig 2>/dev/null; then
-    git config --global user.name "${GITHUB_ACTOR}"
-    git config --global user.email "${GITHUB_ACTOR}@example.com"
-  fi
-else
-  ACTION=false
-fi
-
-if [ "$(uname -s)" != "Darwin" ]; then
-  if grep -qi debian /etc/os-release 2>/dev/null; then
-    export DEBIAN=true
-  fi
-  export MACOS=false
-fi
+_vars
 
 topath "$(cd "$(dirname "${BASH_SOURCE[0]}")"; pwd -P)"
 
