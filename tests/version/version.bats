@@ -123,8 +123,11 @@ run_description() {
   run version tag
   if $ACTION; then
     assert_success
-    assert_line "::set-output name=bumped::false"
-    assert_line "::set-output name=version::0.0.0"
+    assert_output <<EOF
+::echo::on
+::set-output name=BUMPED::false
+::set-output name=VERSION::0.0.0
+EOF
   else
     assert_failure
     assert_output --partial "0.0.0 == 0.0.0"
@@ -141,8 +144,11 @@ run_description() {
   assert_success
 
   if $ACTION; then
-    assert_line "::set-output name=bumped::true"
-    assert_line "::set-output name=version::0.0.1"
+    assert_output <<EOF
+::echo::on
+::set-output name=BUMPED::true
+::set-output name=VERSION::0.0.1
+EOF
   else
     assert_output "0.0.1"
   fi

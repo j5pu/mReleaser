@@ -4,6 +4,7 @@ Mreleaser __init__.py Module
 """
 __all__ = (
     "ExcType",
+    "cli_invoke",
     "suppress",
     "version",
 )
@@ -18,10 +19,18 @@ from typing import Type
 from typing import TypeAlias
 from typing import TypeVar
 
+from typer import Typer
+from typer.testing import CliRunner
+
 ExcType: TypeAlias = Type[Exception] | tuple[Type[Exception], ...]
 PROJECT: str = Path(__file__).parent.name
 T = TypeVar('T')
 P = ParamSpec('P')
+
+cli_invoke = CliRunner().invoke
+
+
+app = Typer(add_completion=False, context_settings=dict(help_option_names=['-h', '--help']), name=PROJECT)
 
 
 def suppress(func: Callable[P, T], *args: P.args, exception: ExcType | None = Exception, **kwargs: P.kwargs) -> T:
@@ -49,3 +58,14 @@ def version(package: str = PROJECT) -> str:
     """
     return suppress(importlib.metadata.version, package or Path(__file__).parent.name,
                     exception=importlib.metadata.PackageNotFoundError)
+
+
+@app.command(name="--version")
+def _version() -> None:
+    """
+    Prints the version of the package.
+    Returns:
+        None
+    """
+    print(version())
+
