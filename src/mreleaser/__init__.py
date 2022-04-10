@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # coding=utf-8
 """
 Mreleaser __init__.py Module
@@ -69,3 +70,11 @@ def _version() -> None:
     """
     print(version())
 
+
+if __name__ == "__main__":
+    from typer import Exit
+    try:
+        Exit(app())
+    except KeyboardInterrupt:
+        print('Aborted!')
+        Exit()

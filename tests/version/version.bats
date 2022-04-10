@@ -123,7 +123,7 @@ run_description() {
   run version tag
   if $ACTION; then
     assert_success
-    assert_output <<EOF
+    assert_output - <<EOF
 ::echo::on
 ::set-output name=BUMPED::false
 ::set-output name=VERSION::0.0.0
@@ -144,7 +144,7 @@ EOF
   assert_success
 
   if $ACTION; then
-    assert_output <<EOF
+    assert_output - <<EOF
 ::echo::on
 ::set-output name=BUMPED::true
 ::set-output name=VERSION::0.0.1
