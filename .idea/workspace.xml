@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d6561d3-8ff0-4aac-861a-d1255edc4d73" name="Changes" comment="" />
+    <list default="true" id="1d6561d3-8ff0-4aac-861a-d1255edc4d73" name="Changes" comment="fix: first">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/mreleaser.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mreleaser.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/setup.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mreleaser/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mreleaser/__init__.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,12 +21,16 @@
       <list>
         <option value="BashSupport Pro bats-core" />
         <option value="Bash Executable" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
   </component>
   <component name="JsBowerSettings">
     <node-interpreter value="project" />
@@ -48,7 +58,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/tests" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/tests/mreleaser" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.jscs" value="project" />
     <property name="node.js.path.for.package.standard" value="project" />
@@ -57,27 +67,28 @@
     <property name="node.js.selected.package.jscs" value="" />
     <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.stylelint" value="/usr/local/lib/node_modules/stylelint" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.CommitDialog" />
+    <property name="settings.editor.selected.configurable" value="PyConsoleConfigurable.Python Console" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
-      <console-settings custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;try:&#10;    import rich.pretty&#10;    import rich.console&#10;    import rich &#10;    from rich import inspect &#10;    from functools import partial &#10;    ins = partial(rich.inspect, docs=False, methods=True, private=True)&#10;    rinspect  = rich.inspect&#10;    console = rich.console.Console(color_system='256')&#10;    cp = console.print&#10;    rich.pretty.install(console=console, expand_all=True)&#10;except ModuleNotFoundError:&#10;    pass&#10;try:&#10;    from ghapi.all import GhApi&#10;    ghapi = GhApi()&#10;except ModuleNotFoundError:&#10;    pass&#10;if hasattr(__builtins__, '__IPYTHON__'):&#10;    '%rehashx'&#10;" is-module-sdk="true">
-        <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;try:&#10;    import rich.pretty&#10;    import rich.console&#10;    import rich &#10;    from rich import inspect &#10;    from functools import partial &#10;    ins = partial(rich.inspect, docs=False, methods=True, private=True)&#10;    rinspect  = rich.inspect&#10;    console = rich.console.Console(color_system='256')&#10;    cp = console.print&#10;    rich.pretty.install(console=console, expand_all=True)&#10;except ModuleNotFoundError:&#10;    pass&#10;try:&#10;    from ghapi.all import GhApi&#10;    ghapi = GhApi()&#10;except ModuleNotFoundError:&#10;    pass&#10;if hasattr(__builtins__, '__IPYTHON__'):&#10;    '%rehashx'&#10;" />
+      <console-settings custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;try:&#10;    import rich.pretty&#10;    import rich.console&#10;    import rich &#10;    from rich import inspect &#10;    from functools import partial &#10;    ins = partial(rich.inspect, docs=False, methods=True, private=True)&#10;    rinspect  = rich.inspect&#10;    console = rich.console.Console(color_system='256')&#10;    cp = console.print&#10;    rich.pretty.install(console=console, expand_all=True)&#10;except ModuleNotFoundError:&#10;    pass&#10;try:&#10;    from ghapi.all import GhApi&#10;    ghapi = GhApi()&#10;except ModuleNotFoundError:&#10;    pass&#10;if hasattr(__builtins__, '__IPYTHON__'):&#10;    %rehashx&#10;    %load_ext autoreload&#10;    %autoreload 2&#10;from mreleaser import *&#10;" module-name="mreleaser" is-module-sdk="true">
+        <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;try:&#10;    import rich.pretty&#10;    import rich.console&#10;    import rich &#10;    from rich import inspect &#10;    from functools import partial &#10;    ins = partial(rich.inspect, docs=False, methods=True, private=True)&#10;    rinspect  = rich.inspect&#10;    console = rich.console.Console(color_system='256')&#10;    cp = console.print&#10;    rich.pretty.install(console=console, expand_all=True)&#10;except ModuleNotFoundError:&#10;    pass&#10;try:&#10;    from ghapi.all import GhApi&#10;    ghapi = GhApi()&#10;except ModuleNotFoundError:&#10;    pass&#10;if hasattr(__builtins__, '__IPYTHON__'):&#10;    %rehashx&#10;    %load_ext autoreload&#10;    %autoreload 2&#10;from mreleaser import *&#10;" />
         <option name="myUseModuleSdk" value="true" />
+        <option name="myModuleName" value="mreleaser" />
       </console-settings>
     </option>
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/tests" />
-      <recent name="$PROJECT_DIR$/.idea" />
+      <recent name="$PROJECT_DIR$/tests/mreleaser" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/bin" />
-      <recent name="$PROJECT_DIR$/etc/bash_completion.d" />
+      <recent name="$PROJECT_DIR$/tests" />
+      <recent name="$PROJECT_DIR$/.idea" />
     </key>
   </component>
-  <component name="RunManager" selected="Makefile Target.publish">
+  <component name="RunManager" selected="Makefile Target.tests">
     <configuration default="true" type="BashConfigurationType" singleton="false" factoryName="Bash">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="INTERPRETER_PATH" value="" />
@@ -665,7 +676,7 @@
             <RunConfInfo>
               <option name="confId" value="Makefile Target.publish" />
               <option name="executorId" value="Run" />
-              <option name="timestamp" value="1649535076946" />
+              <option name="timestamp" value="1649580004159" />
             </RunConfInfo>
           </value>
         </entry>
@@ -674,7 +685,7 @@
             <RunConfInfo>
               <option name="confId" value="Makefile Target.tests" />
               <option name="executorId" value="Run" />
-              <option name="timestamp" value="1649529294575" />
+              <option name="timestamp" value="1649579469160" />
             </RunConfInfo>
           </value>
         </entry>
