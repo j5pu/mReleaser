@@ -28,6 +28,33 @@
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/.env" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.envrc" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/bats.bash/bats::envrc.bats" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/version/version.bats" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/bin/bats.bash" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/bats.bash/bats::array.bats" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.github/workflows/main.yaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/action.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Makefile" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/venv/lib/python3.10/site-packages/git/cmd.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/bin/version" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/Brewfile" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/bin/pybuild" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file:///usr/local/Cellar/python@3.10/3.10.2/Frameworks/Python.framework/Versions/3.10/lib/python3.10/pathlib.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/setup.cfg" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file:///usr/local/Cellar/python@3.10/3.10.2/Frameworks/Python.framework/Versions/3.10/lib/python3.10/dataclasses.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/mreleaser/__init__.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/mreleaser/test_cli.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/venv/lib/python3.10/site-packages/git/repo/base.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$APPLICATION_HOME_DIR$/plugins/python/helpers/typeshed/stdlib/posixpath.pyi" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/venv/lib/python3.10/site-packages/gitdb/db/loose.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/venv/lib/python3.10/site-packages/git/util.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$APPLICATION_HOME_DIR$/plugins/python/helpers/typeshed/stdlib/ntpath.pyi" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/bin/mreleaser.bash" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="JsBowerSettings">
     <node-interpreter value="project" />
     <bower-package value="" />
