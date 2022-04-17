@@ -4,4 +4,9 @@
   <component name="RSettings">
     <option name="interpreterPath" value="/usr/local/bin/R" />
   </component>
+  <component name="SwUserDefinedSpecifications">
+    <option name="specTypeByUrl">
+      <map />
+    </option>
+  </component>
 </project>

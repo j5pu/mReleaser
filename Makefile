@@ -11,5 +11,5 @@ publish: tests
 
 tests:
 	@. ./bin/mreleaser.bash
-	@bin/bats.bash run
+	@bats.bash run
 

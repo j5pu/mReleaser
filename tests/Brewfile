@@ -1,17 +1,11 @@
 tap "homebrew/bundle"
 tap "homebrew/core"
-tap "bats-core/bats-core"
+tap "j5pu/tap"
 
-brew "bash"
-brew "bash-completion@2"
-brew "bats-core"
-brew "bats-core/bats-core/bats-assert"
-brew "bats-core/bats-core/bats-file"
-brew "bats-core/bats-core/bats-support"
+brew "j5pu/tap/bats.bash"
 
 if RUBY_PLATFORM[/darwin/]
   tap "caarlos0/tap"
 
-  brew "parallel"
   brew "caarlos0/tap/svu"
 end
