@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d6561d3-8ff0-4aac-861a-d1255edc4d73" name="Changes" comment="fix: first">
-      <change beforePath="$PROJECT_DIR$/.idea/assets/Path Variables.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/assets/Terminal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/bats.bash" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/etc/bash_completion.d/bats.bash" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Brewfile" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Brewfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/bats.bash/_bats::sourced.bats" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/bats.bash/_bats::vars.bats" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/bats.bash/asserts.bats" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/bats.bash/bats::array.bats" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/bats.bash/bats::envrc.bats" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/bats.bash/func::exported.bats" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/helpers/helper.bash" beforeDir="false" afterPath="$PROJECT_DIR$/tests/helpers/helper.bash" afterDir="false" />
-    </list>
+    <list default="true" id="1d6561d3-8ff0-4aac-861a-d1255edc4d73" name="Changes" comment="fix: first" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -96,6 +79,7 @@
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PythonContentEntriesConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
